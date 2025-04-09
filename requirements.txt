@@ -1,12 +1,22 @@
-# requirements.txt (Unpinned - RECOMMENDED FIX)
+# requirements.txt (Unpinned LlamaIndex)
+
+# Core application framework
 streamlit
+
+# LlamaIndex Components (Unpinned to get latest compatible versions)
 llama-index-core
 llama-index-llms-huggingface
 llama-index-embeddings-huggingface
 llama-index-readers-file
+
+# Hugging Face libraries
 sentence-transformers
 transformers
 huggingface_hub
+
+# ML framework (often required by transformers/sentence-transformers)
 torch
+
+# Utilities used in code or commonly needed
 python-dotenv
 gdown
