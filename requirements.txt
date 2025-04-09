@@ -1,18 +1,16 @@
-
-# requirements.txt (Revised to fix conflict)
+# requirements.txt (Revised - Unpinning LlamaIndex)
 
 # Core application framework
 streamlit
 
-# LlamaIndex Components (pinned to match Colab env, except where needed)
-llama-index-core==0.12.29
-llama-index-llms-huggingface==0.5.0
-llama-index-embeddings-huggingface==0.5.3
-llama-index-readers-file==0.4.7
-# REMOVED: llama-index-llms-huggingface-api==0.4.1
+# LlamaIndex Components (Unpinned to get latest compatible versions)
+llama-index-core
+llama-index-llms-huggingface
+llama-index-embeddings-huggingface
+llama-index-readers-file
 
 # Hugging Face libraries
-sentence-transformers # REMOVED version pin ==2.2.2
+sentence-transformers
 transformers
 huggingface_hub
 
@@ -22,6 +20,3 @@ torch
 # Utilities used in code or commonly needed
 python-dotenv
 gdown
-
-
-
