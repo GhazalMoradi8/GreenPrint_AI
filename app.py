@@ -1,41 +1,15 @@
-import streamlit as st
-import gdown
 from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
+from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import StorageContext, load_index_from_storage
+from llama_index.core.chat_engine import ContextChatEngine
+from llama_index.core.memory import ChatMemoryBuffer
 from llama_index.core.base.llms.types import ChatMessage, MessageRole
+import streamlit as st
+from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.core.memory import ChatMemoryBuffer
 from llama_index.core.chat_engine import ContextChatEngine
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
-import os
-from huggingface_hub import login
 
-def set_hf_cache():
-    os.environ["HF_HOME"] = "/tmp/hf_cache"
-    os.makedirs("/tmp/hf_cache", exist_ok=True)
-set_hf_cache()  # Call this early in your app
-# os.environ["HF_HOME"] = "/tmp/hf_cache"
-# os.makedirs("/tmp/hf_cache", exist_ok=True)
-# Now use your HF token
-hf_token = st.secrets["Amu_ocha"]
-login(token=st.secrets["Amu_ocha"])
-login(token=hf_token)
-
-from huggingface_hub import hf_hub_download
-
-hf_hub_download(repo_id="sentence-transformers/all-MiniLM-L6-v2",
-                filename="config.json",
-                token=hf_token,
-                local_files_only=False)
-
-
-# Download the vector database when the app starts
-st.title("RAG with Streamlit and Hugging Face")
-
-if st.button('Download Vector Database'):
-    gdown.download_folder('https://drive.google.com/drive/folders/184-9oriLLmCtsTGvNSKJ5fp1YxZyDWAp?usp=drive_link', quiet=False)
-    st.success("Vector database downloaded successfully!")
-# hf_token = st.secrets["Amu_ocha"]
-# st.secrets["hf_token"] == "Amu_ocha"
 # llm
 hf_model = "mistralai/Mistral-7B-Instruct-v0.3"
 llm = HuggingFaceInferenceAPI(model_name = hf_model, task = "text-generation")
@@ -48,7 +22,7 @@ embeddings = HuggingFaceEmbedding(model_name=embedding_model,
                                   cache_folder=embeddings_folder)
 
 # load Vector Database
-storage_context = StorageContext.from_defaults(persist_dir="/content/vector_index")
+storage_context = StorageContext.from_defaults(persist_dir="/content/vecctor_index")
 vector_index = load_index_from_storage(storage_context, embed_model=embeddings)
 
 # retriever
