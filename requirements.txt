@@ -20,3 +20,6 @@ torch
 # Utilities used in code or commonly needed
 python-dotenv
 gdown
+
+llama-index
+llama-index-llms-huggingface
