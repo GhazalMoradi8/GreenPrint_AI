@@ -1,17 +1,18 @@
 
-# requirements.txt
+# requirements.txt (Revised to fix conflict)
 
 # Core application framework
 streamlit
 
-# LlamaIndex Components (pinned to match Colab env)
+# LlamaIndex Components (pinned to match Colab env, except where needed)
 llama-index-core==0.12.29
 llama-index-llms-huggingface==0.5.0
 llama-index-embeddings-huggingface==0.5.3
 llama-index-readers-file==0.4.7
+# REMOVED: llama-index-llms-huggingface-api==0.4.1
 
 # Hugging Face libraries
-sentence-transformers==2.2.2
+sentence-transformers # REMOVED version pin ==2.2.2
 transformers
 huggingface_hub
 
@@ -21,10 +22,6 @@ torch
 # Utilities used in code or commonly needed
 python-dotenv
 gdown
-
-# Ensure necessary dependencies for the above are included
-# (pip/uv should handle transitive dependencies, but being explicit doesn't hurt)
-# Example: Jinja2, numpy, requests etc. are usually pulled in automatically.
 
 
 
