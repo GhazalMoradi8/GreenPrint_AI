@@ -15,6 +15,6 @@ huggingface_hub==0.22.2
 # --- ML Framework ---
 torch==2.2.2
 
-# --- Utility Libraries ---
+# --- Utilities ---
 python-dotenv==1.0.1
 gdown==5.1.0
