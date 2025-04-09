@@ -1,5 +1,6 @@
 streamlit
 llama-index
+llama-index-llms-huggingface
 llama-index-embeddings-huggingface
 sentence-transformers==2.2.2
 torch
