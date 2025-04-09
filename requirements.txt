@@ -1,10 +1,10 @@
-# --- Core Framework ---
+# --- Core ---
 streamlit
 
-# --- LlamaIndex Modular Components ---
+# --- Modular LlamaIndex Components (Compatible with Python 3.12) ---
 llama-index-core==0.10.32
-llama-index-llms-huggingface==0.1.10
-llama-index-embeddings-huggingface==0.1.6
+llama-index-llms-huggingface==0.4.2
+llama-index-embeddings-huggingface==0.2.2
 llama-index-readers-file==0.1.10
 
 # --- Hugging Face Ecosystem ---
