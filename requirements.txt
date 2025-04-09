@@ -1,8 +1,8 @@
 # --- Core ---
 streamlit
 
-# --- LlamaIndex Modular Components (Compatible with Python 3.12) ---
-llama-index-core==0.10.32
+# --- LlamaIndex Components (compatible with Python 3.12) ---
+llama-index-core==0.12.10
 llama-index-llms-huggingface==0.4.2
 llama-index-embeddings-huggingface==0.2.2
 llama-index-readers-file==0.4.7
@@ -10,7 +10,7 @@ llama-index-readers-file==0.4.7
 # --- Hugging Face Libraries ---
 transformers==4.39.3
 sentence-transformers==2.5.1
-huggingface_hub  # version left flexible to avoid conflicts
+huggingface_hub  # allow pip to pick a compatible version
 
 # --- ML Framework ---
 torch==2.2.2
