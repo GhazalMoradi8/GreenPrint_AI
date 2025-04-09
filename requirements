@@ -1,0 +1,13 @@
+streamlit
+llama-index
+llama-index-embeddings-huggingface
+sentence-transformers==2.2.2
+torch
+transformers
+python-dotenv
+gdown
+llama-index-core
+llama-index-llms-huggingface-api
+llama-index-readers-file
+llama-index-embeddings-huggingface
+gdown
