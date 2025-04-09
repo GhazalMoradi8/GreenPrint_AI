@@ -1,25 +1,20 @@
-# requirements.txt (Unpinned LlamaIndex)
-
-# Core application framework
+# --- Core Framework ---
 streamlit
 
-# LlamaIndex Components (Unpinned to get latest compatible versions)
-llama-index-core
-llama-index-llms-huggingface
-llama-index-embeddings-huggingface
-llama-index-readers-file
+# --- LlamaIndex Modular Components ---
+llama-index-core==0.10.32
+llama-index-llms-huggingface==0.1.10
+llama-index-embeddings-huggingface==0.1.6
+llama-index-readers-file==0.1.10
 
-# Hugging Face libraries
-sentence-transformers
-transformers
-huggingface_hub
+# --- Hugging Face Ecosystem ---
+transformers==4.39.3
+sentence-transformers==2.5.1
+huggingface_hub==0.22.2
 
-# ML framework (often required by transformers/sentence-transformers)
-torch
+# --- ML Framework ---
+torch==2.2.2
 
-# Utilities used in code or commonly needed
-python-dotenv
-gdown
-
-llama-index
-llama-index-llms-huggingface
+# --- Utility Libraries ---
+python-dotenv==1.0.1
+gdown==5.1.0
