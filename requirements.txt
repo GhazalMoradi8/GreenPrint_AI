@@ -1,4 +1,12 @@
-# requirements.txt (Minimal Test)
-# Leave only streamlit or nothing if streamlit is automatically installed
-# Or maybe add just one simple package like requests
-requests
+# requirements.txt (Unpinned - RECOMMENDED FIX)
+streamlit
+llama-index-core
+llama-index-llms-huggingface
+llama-index-embeddings-huggingface
+llama-index-readers-file
+sentence-transformers
+transformers
+huggingface_hub
+torch
+python-dotenv
+gdown
