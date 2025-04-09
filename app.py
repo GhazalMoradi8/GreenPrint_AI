@@ -1,5 +1,5 @@
 # Import necessary libraries
-from llama_index.llms.huggingface import HuggingFaceLLM
+from llama_index.llms.huggingface import HuggingFaceInferenceAPI
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.core.chat_engine import ContextChatEngine
@@ -10,9 +10,9 @@ import os
 
 # --- Configuration ---
 
-# LLM Configuration
+# LLM Configuration (Fixed)
 hf_model = "mistralai/Mistral-7B-Instruct-v0.3"
-llm = HuggingFaceLLM(model_name=hf_model, task="text-generation")
+llm = HuggingFaceInferenceAPI(model_name=hf_model)
 
 # Embeddings Configuration
 embedding_model = "sentence-transformers/all-MiniLM-l6-v2"
@@ -22,14 +22,14 @@ embeddings = HuggingFaceEmbedding(model_name=embedding_model)
 persist_directory = "vecctor_index"
 
 if not os.path.exists(persist_directory):
-    st.error(f"Error: Vector index directory '{persist_directory}' not found. Make sure it's in your GitHub repository root.")
+    st.error(f"❌ Error: Vector index directory '{persist_directory}' not found. Make sure it's in your GitHub repository root.")
     st.stop()
 
 try:
     storage_context = StorageContext.from_defaults(persist_dir=persist_directory)
     vector_index = load_index_from_storage(storage_context, embed_model=embeddings)
 except Exception as e:
-    st.error(f"Error loading vector index from '{persist_directory}': {e}")
+    st.error(f"❌ Error loading vector index from '{persist_directory}': {e}")
     st.stop()
 
 # Retriever Configuration
@@ -58,7 +58,7 @@ def init_bot():
         )
         return engine
     except Exception as e:
-        st.error(f"Failed to initialize chatbot engine: {e}")
+        st.error(f"❌ Failed to initialize chatbot engine: {e}")
         return None
 
 rag_bot = init_bot()
@@ -67,7 +67,7 @@ if rag_bot is None:
     st.stop()
 
 # --- Streamlit UI ---
-st.title("Carbonfootprint Chatbot")
+st.title("💬 CarbonFootprint Chatbot")
 
 # Display chat messages from history
 if hasattr(rag_bot, 'chat_history') and rag_bot.chat_history:
@@ -85,13 +85,13 @@ if hasattr(rag_bot, 'chat_history') and rag_bot.chat_history:
 # User input and response handling
 if prompt := st.chat_input("Curious minds wanted!"):
     st.chat_message("user").markdown(prompt)
-    with st.spinner("Digging for answers..."):
+    with st.spinner("🔍 Digging for answers..."):
         try:
             answer = rag_bot.chat(prompt)
-            response_text = getattr(answer, 'response', 'Sorry, I could not process that.')
+            response_text = getattr(answer, 'response', '❌ Sorry, I could not process that.')
             with st.chat_message("assistant"):
                 st.markdown(response_text)
         except Exception as e:
             st.error(f"Error during chat processing: {e}")
             with st.chat_message("assistant"):
-                st.markdown("Sorry, an error occurred while trying to get an answer.")
+                st.markdown("❌ Sorry, an error occurred while trying to get an answer.")
