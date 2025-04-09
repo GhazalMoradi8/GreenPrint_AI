@@ -1,4 +1,4 @@
-from llama_index.llms.huggingface_api import HuggingFaceInferenceAPI
+from llama_index.llms.huggingface import HuggingFaceInferenceAPI
 from llama_index.embeddings.huggingface import HuggingFaceEmbedding
 from llama_index.core import StorageContext, load_index_from_storage
 from llama_index.core.chat_engine import ContextChatEngine
